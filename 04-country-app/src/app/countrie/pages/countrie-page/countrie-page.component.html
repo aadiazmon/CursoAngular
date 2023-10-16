@@ -1,0 +1,38 @@
+<ng-template #loading>
+  <div class="alert alert-warning text-center">
+    Espere por favor
+  </div>
+</ng-template>
+<div *ngIf="countrie; else loading">
+  <div class="row">
+    <div class="col-12">
+      <h2>País: {{countrie.name.common}}</h2>
+      <hr/>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-4">
+      <h2>Bandera</h2>
+      <img [src]="countrie.flags.svg" [alt]="countrie.name.common" class="img-thumbnail" />
+    </div>
+    <div class="col">
+      <h3>Información</h3>
+      <ul class="list-group">
+        <li class="list-group-item">
+          <strong>Población:</strong> {{countrie.population | number}}
+        </li>
+        <li class="list-group-item">
+          <strong>Código</strong> {{countrie.cca3}}
+        </li>
+      </ul>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col">
+      <h3>Traducciones</h3>
+      <div class="d-flex flex-wrap">
+        <span *ngFor="let translation of countrie.translations | keyvalue" class="badge bg-primary m-1">{{translation.value.common}}</span>
+      </div>
+    </div>
+  </div>
+</div>
