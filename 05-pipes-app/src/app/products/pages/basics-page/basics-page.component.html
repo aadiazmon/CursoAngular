@@ -1,0 +1,39 @@
+<p-panel header="Pipes básicos" class="p-1">
+  <p>Pipes incluidos en Angular - Usualmente en el Common Module</p>
+</p-panel>
+<div class="grid">
+  <div class="col-12 md:col-4">
+    <p-card header="uppercase">
+      <p><strong>Dato original:</strong> {{nameLower}}</p>
+      <p><strong>Dato mutado:</strong> {{nameLower | uppercase}}</p>
+    </p-card>
+  </div>
+  <div class="col-12 md:col-4">
+    <p-card header="lowercase">
+      <p><strong>Dato original:</strong> {{nameUpper}}</p>
+      <p><strong>Dato mutado:</strong> {{nameUpper | lowercase}}</p>
+    </p-card>
+  </div>
+  <div class="col-12 md:col-4">
+    <p-card header="titlecase">
+      <p><strong>Dato original:</strong> {{fullName}}</p>
+      <p><strong>Dato mutado:</strong> {{fullName | titlecase}}</p>
+    </p-card>
+  </div>
+  <div class="col-12">
+    <p-card header="date">
+      <p><strong>Dato original:</strong> {{customDate}}</p>
+      <p><strong>Dato mutado (| date):</strong> {{customDate | date}}</p>
+      <p><strong>Dato mutado (| date:'short'):</strong> {{customDate | date:'short'}}</p>
+      <p><strong>Dato mutado (| date:'long'):</strong> {{customDate | date:'long'}}</p>
+      <p><strong>Dato mutado (| date:'MMMM'):</strong> {{customDate | date:'MMMM'}}</p>
+      <p><strong>Dato mutado (| date:'MMMM dd, yyyy'):</strong> {{customDate | date:'MMMM dd, yyyy'}}</p>
+      <p><strong>Dato mutado (| date:'dd/MM/yyyy'):</strong> {{customDate | date:'dd/MM/yyyy'}}</p>
+      <p><strong>Dato mutado (| date:'date:'long':'GMT+1'):</strong> {{customDate | date:'long':'GMT+1'}}</p>
+      <p><strong>Dato mutado (| date:'date:'long':'GMT-4'):</strong> {{customDate | date:'long':'GMT-4'}}</p>
+      <p><strong>Dato mutado (| date:'long':'':'es'):</strong> {{customDate | date:'long':'':'es'}}</p>
+      <p><strong>Dato mutado (| date:'long':'':'en'):</strong> {{customDate | date:'long':'':'en'}}</p>
+      <p><strong>Dato mutado (| date:'long':'':'fr'):</strong> {{customDate | date:'long':'':'fr'}}</p>
+    </p-card>
+  </div>
+</div>

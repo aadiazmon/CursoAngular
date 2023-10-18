@@ -1,0 +1,23 @@
+<p-panel header="Pipes numéricos" class="p-1">
+  <p>Pipes incluidos en Angular - Usualmente en el Common Module</p>
+</p-panel>
+<div class="grid">
+  <div class="col-12 md:col-4">
+    <p-card header="number" subheader="| number:'1.2-2'">
+      <p><strong>Dato original:</strong> {{totalSells}}</p>
+      <p><strong>Dato mutado:</strong> {{totalSells | number:'1.2-2'}}</p>
+    </p-card>
+  </div>
+  <div class="col-12 md:col-4">
+    <p-card header="currency" subheader="| currency:'EUR':'symbol-narrow':'1.6-6'">
+      <p><strong>Dato original:</strong> {{totalSells}}</p>
+      <p><strong>Dato mutado:</strong> {{totalSells | currency:'EUR':'symbol-narrow':'1.6-6'}}</p>
+    </p-card>
+  </div>
+  <div class="col-12 md:col-4">
+    <p-card header="percent" subheader="percent | percent:'1.2-2'">
+      <p><strong>Dato original:</strong> {{percent}}</p>
+      <p><strong>Dato mutado:</strong> {{percent | percent:'1.2-2'}}</p>
+    </p-card>
+  </div>
+</div>
