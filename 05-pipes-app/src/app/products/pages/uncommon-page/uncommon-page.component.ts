@@ -5,7 +5,7 @@ import { Observable, interval, tap } from 'rxjs';
 type Gender = 'male' | 'female' | '';
 
 @Component({
-  selector: 'app-uncommon-page',
+  selector: 'products-uncommon-page',
   templateUrl: './uncommon-page.component.html',
   styleUrls: ['./uncommon-page.component.css']
 })
