@@ -16,11 +16,17 @@ const checkAuthStatus = (): boolean | Observable<boolean> => {
     );
 };
 
-export const canActivateAuthGuard: CanActivateFn = (route: ActivatedRouteSnapshot, state: RouterStateSnapshot) => {
+export const canActivateAuthGuard: CanActivateFn = (
+  route: ActivatedRouteSnapshot,
+  state: RouterStateSnapshot
+) => {
   return checkAuthStatus();
 };
 
-export const canMatchAuthGuard: CanMatchFn = (route: Route, segments: UrlSegment[]) => {
+export const canMatchAuthGuard: CanMatchFn = (
+  route: Route,
+  segments: UrlSegment[]
+) => {
   return checkAuthStatus();
 };
 
