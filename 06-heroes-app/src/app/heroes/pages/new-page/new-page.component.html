@@ -1,0 +1,56 @@
+<h1 class="font-medium pt-2">
+  {{currentHero.id ? 'Editar' : 'Añadir'}}
+</h1>
+<mat-divider class="mb-2"></mat-divider>
+<div class="grid">
+  <div class="col-12 sm:col-6">
+    <mat-card>
+      <mat-card-content>
+        <form [formGroup]="heroForm" (ngSubmit)="onSubmit()" class="grid">
+          <mat-form-field class="col-12 sm:col-6">
+            <mat-label>Super héroe</mat-label>
+            <input matInput formControlName="superhero" type="text" required />
+          </mat-form-field>
+          <mat-form-field class="col-12 sm:col-6">
+            <mat-label>Alter ego</mat-label>
+            <input matInput formControlName="alter_ego" type="text" required />
+          </mat-form-field>
+          <mat-form-field class="col-12">
+            <mat-label>Primera aparición</mat-label>
+            <input matInput formControlName="first_appearance" type="text" required />
+          </mat-form-field>
+          <mat-form-field class="col-12">
+            <mat-label>Personajes</mat-label>
+            <input matInput formControlName="characters" type="text" required />
+          </mat-form-field>
+          <mat-form-field class="col-12">
+            <mat-label>Editor</mat-label>
+            <mat-select formControlName="publisher" required>
+              <mat-option *ngFor="let publish of publishers" [value]="publish.id">{{publish.description}}</mat-option>
+            </mat-select>
+          </mat-form-field>
+          <mat-form-field class="col-12">
+            <mat-label>Imagen alternativa</mat-label>
+            <input matInput formControlName="alt_img" type="text" />
+          </mat-form-field>
+        </form>
+      </mat-card-content>
+      <mat-card-actions>
+        <span class="spacer"></span>
+        <button mat-raised-button (click)="onSubmit()" color="primary" class="mr-2">
+          <mat-icon>save</mat-icon>
+          Guardar
+        </button>
+        <button *ngIf="currentHero.id" mat-raised-button (click)="onDeleteHero()" color="warn">
+          <mat-icon>delete</mat-icon>
+          Borrar
+        </button>
+      </mat-card-actions>
+    </mat-card>
+  </div>
+  <div class="col-12 sm:col-6">
+    <mat-card>
+      <img [src]="currentHero | heroImage" mat-card-image alt="Imagen del héroe" />
+    </mat-card>
+  </div>
+</div>
