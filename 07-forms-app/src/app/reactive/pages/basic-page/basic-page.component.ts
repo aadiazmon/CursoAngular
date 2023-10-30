@@ -12,11 +12,6 @@ const myFormDefault = { name: '', price: 0, inStorage: 0 };
 })
 export class BasicPageComponent implements OnInit {
   public isDebug: boolean = environment.isDebug;
-  // public myform: FormGroup = new FormGroup({
-  //   name: new FormControl(''),
-  //   price: new FormControl(0),
-  //   inStorage: new FormControl(0)
-  // });
 
   public myForm: FormGroup = this.formBuilder.group({
     name: ['', [Validators.required, Validators.minLength(3)]],
