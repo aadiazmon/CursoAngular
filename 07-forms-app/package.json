@@ -1,5 +1,5 @@
 {
-  "name": "heroes-app",
+  "name": "forms-app",
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
@@ -11,17 +11,15 @@
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
     "delete:docs": "del ..\\docs",
-    "copy:dist": "copyfiles dist/heroes-app/* ..\\docs -f"
+    "copy:dist": "copyfiles dist/forms-app/* ..\\docs -f"
   },
   "private": true,
   "dependencies": {
     "@angular/animations": "^16.2.0",
-    "@angular/cdk": "^16.2.9",
     "@angular/common": "^16.2.0",
     "@angular/compiler": "^16.2.0",
     "@angular/core": "^16.2.0",
     "@angular/forms": "^16.2.0",
-    "@angular/material": "^16.2.9",
     "@angular/platform-browser": "^16.2.0",
     "@angular/platform-browser-dynamic": "^16.2.0",
     "@angular/router": "^16.2.0",
@@ -36,7 +34,6 @@
     "@types/jasmine": "~4.3.0",
     "copyfiles": "^2.4.1",
     "jasmine-core": "~4.6.0",
-    "json-server": "^0.17.4",
     "karma": "~6.4.0",
     "karma-chrome-launcher": "~3.2.0",
     "karma-coverage": "~2.2.0",
