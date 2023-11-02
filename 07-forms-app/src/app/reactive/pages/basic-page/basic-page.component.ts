@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
+import { ValidatorsService } from 'src/app/shared/services/validators.service';
+
 import { environment } from 'src/environments/environment.development';
 
 const myFormDefault = { name: '', price: 0, inStorage: 0 };
@@ -20,7 +22,8 @@ export class BasicPageComponent implements OnInit {
   });
 
   constructor(
-    private formBuilder: FormBuilder
+    private formBuilder: FormBuilder,
+    private validatorsService: ValidatorsService
   ) { }
 
   ngOnInit(): void {
@@ -33,28 +36,14 @@ export class BasicPageComponent implements OnInit {
       return;
     }
 
-    console.log(this.myForm.value);
-
     this.myForm.reset(myFormDefault);
   }
 
   public isValidField(field: string): boolean | null {
-    return this.myForm.controls[field].errors
-        && this.myForm.controls[field].touched;
+    return this.validatorsService.isValidField(this.myForm, field);
   }
 
   public getFieldError(field: string): string | null {
-    if (!this.myForm.controls[field]) return null;
-
-    const errors = this.myForm.controls[field].errors || {};
-    for (const key of Object.keys(errors)) {
-      switch(key) {
-        case 'required':
-          return 'Este campo es requerido';
-        case 'minlength':
-          return `Este campo debe contener al menos ${ errors['minlength'].requiredLength } caracteres.`;
-      }
-    }
-    return null;
+    return this.validatorsService.getFieldError(this.myForm, field);
   }
 }

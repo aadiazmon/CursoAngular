@@ -1,7 +1,11 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
+import { ValidatorsService } from 'src/app/shared/services/validators.service';
+
 import { environment } from 'src/environments/environment.development';
+
+const myFormDefault = { gender: 'M', wantNotifications: false, termsAndConditions: false };
 
 @Component({
   selector: 'app-switches-page',
@@ -17,28 +21,18 @@ export class SwitchesPageComponent {
     termsAndConditions: [false, Validators.requiredTrue]
   });
 
+  public person = {
+    gender: 'M',
+    wantNotifications: false
+  }
+
   constructor(
-    private formBuilder: FormBuilder
+    private formBuilder: FormBuilder,
+    private validatorsService: ValidatorsService
   ) { }
 
   public isValidField(field: string): boolean | null {
-    return this.myForm.controls[field].errors
-        && this.myForm.controls[field].touched;
-  }
-
-  public getFieldError(field: string): string | null {
-    if (!this.myForm.controls[field]) return null;
-
-    const errors = this.myForm.controls[field].errors || {};
-    for (const key of Object.keys(errors)) {
-      switch(key) {
-        case 'required':
-          return 'Este campo es requerido';
-        case 'minlength':
-          return `Este campo debe contener al menos ${ errors['minlength'].requiredLength } caracteres.`;
-      }
-    }
-    return null;
+    return this.validatorsService.isValidField(this.myForm, field);
   }
 
   onSubmit(): void {
@@ -47,6 +41,11 @@ export class SwitchesPageComponent {
       return;
     }
 
-    console.log(this.myForm.value);
+    // Utilizamos la siguiente sentencia para poder igualar "newPerson" a "this.person"
+    // sin que le anada la propiedad "termsAndConditions" del formulario "this.myForm"
+    const { termsAndConditions, ...newPerson } = this.myForm.value;
+    this.person = newPerson;
+
+    this.myForm.reset(myFormDefault);
   }
 }
